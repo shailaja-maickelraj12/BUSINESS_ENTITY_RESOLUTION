@@ -345,25 +345,30 @@ class MultiSourceBlocker:
         self,
         s1_row: pd.Series
     ) -> Tuple[List[str], Dict[str, List[str]]]:
-        """Generate candidate IDs for one Source 1 entity across both S2 and S3.
+        """Generate candidate IDs for one Source 1 entity across both S2 and S3."""
+        return self.fast_generate_candidates(
+            country=s1_row["country_normalized"],
+            s1_id=s1_row["entity_id"],
+            core_name=s1_row["name_core"],
+            full_name=s1_row["name_normalized"],
+            name_tokens=s1_row["name_tokens"],
+            postal=s1_row["address_postal_code"],
+            house=s1_row["address_house_number"],
+            addr=s1_row["address_normalized"],
+        )
 
-        Args:
-            s1_row: Row series from normalized Source 1 DataFrame.
-
-        Returns:
-            Tuple of:
-              - candidate_ids: Deduped list of candidate entity IDs.
-              - candidate_rules: Dict mapping candidate_id -> list of triggering rules.
-        """
-        country = s1_row["country_normalized"]
-        s1_id = s1_row["entity_id"]
-        core_name = s1_row["name_core"]
-        full_name = s1_row["name_normalized"]
-        name_tokens = s1_row["name_tokens"]
-        postal = s1_row["address_postal_code"]
-        house = s1_row["address_house_number"]
-        addr = s1_row["address_normalized"]
-
+    def fast_generate_candidates(
+        self,
+        country: str,
+        s1_id: str,
+        core_name: str,
+        full_name: str,
+        name_tokens: List[str],
+        postal: str,
+        house: str,
+        addr: str,
+    ) -> Tuple[List[str], Dict[str, List[str]]]:
+        """Fast candidate generation avoiding pd.Series overhead."""
         candidates_map: Dict[str, List[str]] = {}
 
         if country not in self.indexes:
@@ -418,10 +423,28 @@ class MultiSourceBlocker:
         candidate_pairs: Dict[str, List[str]] = {}
         audit_trail: Dict[str, Dict[str, List[str]]] = {}
 
-        for _, row in s1_df.iterrows():
-            s1_id = row["entity_id"]
-            cands, rules_map = self.generate_candidates_for_entity(row)
+        for country, s1_id, core_name, full_name, name_tokens, postal, house, addr in zip(
+            s1_df["country_normalized"].values,
+            s1_df["entity_id"].values,
+            s1_df["name_core"].values,
+            s1_df["name_normalized"].values,
+            s1_df["name_tokens"].values,
+            s1_df["address_postal_code"].values,
+            s1_df["address_house_number"].values,
+            s1_df["address_normalized"].values,
+        ):
+            cands, rules_map = self.fast_generate_candidates(
+                country=country,
+                s1_id=s1_id,
+                core_name=core_name,
+                full_name=full_name,
+                name_tokens=name_tokens,
+                postal=postal,
+                house=house,
+                addr=addr,
+            )
             candidate_pairs[s1_id] = cands
             audit_trail[s1_id] = rules_map
 
         return candidate_pairs, audit_trail
+

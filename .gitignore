@@ -16,8 +16,9 @@ __pycache__/
 6ab10eb3b23ba_student_resource/
 student_resource/dataset/
 
-# Intermediate feature matrices
+# Intermediate feature matrices & generated submission outputs
 artifacts/features/
+output/
 
 # OS / Editor Files
 .DS_Store

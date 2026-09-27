@@ -427,6 +427,9 @@ def normalize_dataframe(
     """
     cfg = config or NormalizationConfig()
     out = df.copy()
+    out["business_name"] = out["business_name"].fillna("").astype(str)
+    out["business_address"] = out["business_address"].fillna("").astype(str)
+    out["country"] = out["country"].fillna("").astype(str)
 
     # 1. Normalize Country
     out["country_normalized"] = out["country"].apply(normalize_country)

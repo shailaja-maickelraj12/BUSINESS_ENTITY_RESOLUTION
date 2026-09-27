@@ -14,6 +14,7 @@ import os
 import pickle
 import sys
 import time
+from collections import defaultdict
 from typing import Dict, List, Optional, Set, Tuple
 
 import numpy as np
@@ -89,7 +90,14 @@ def run_inference(
     feature_cols = model_config["feature_cols"]
     print(f"[Predict] Loaded LightGBM model. Decision threshold: tau = {threshold:.2f}, Features: {len(feature_cols)}", flush=True)
 
-    # 2. Prepare Output Files with exact headers
+    # 2. Read full test S1 reference entities
+    print(f"[Predict] Loading Test Source 1 reference entities from {TEST_SOURCE1_PATH}...", flush=True)
+    t0_s1 = time.time()
+    s1_all = pd.read_csv(TEST_SOURCE1_PATH, sep="\t", dtype=str, keep_default_na=False)
+    original_s1_order = list(s1_all["entity_id"])
+    print(f"[Predict] Loaded {len(s1_all):,} Test S1 entities across {s1_all['country'].nunique()} countries in {time.time() - t0_s1:.1f}s.", flush=True)
+
+    # 3. Prepare Output Files with exact headers
     os.makedirs(os.path.dirname(OUTPUT_MATCHING_PATH), exist_ok=True)
     with open(OUTPUT_MATCHING_PATH, "w", encoding="utf-8") as f_match:
         f_match.write("source1_entity_id\tmatched_entity_ids\n")
@@ -109,27 +117,34 @@ def run_inference(
         use_exact_full_name=True,
         use_token_signature=True,
         use_rare_tokens=True,
-        rare_token_max_df=500,
-        max_cands_per_rare_token=10,
+        rare_token_max_df=1000,
+        max_cands_per_rare_token=15,
         use_postal_code=True,
-        postal_code_max_df=500,
-        max_cands_per_postal=15,
+        postal_code_max_df=1000,
+        max_cands_per_postal=20,
         use_house_number=True,
-        house_number_max_df=500,
-        max_cands_per_house=15,
-        use_char_ngram=True,
-        char_ngram_top_k=5,
-        char_ngram_min_sim=0.50,
-        use_combined_tfidf=True,
-        combined_top_k=3,
-        combined_min_sim=0.40,
-        max_total_candidates_per_entity=50,
+        house_number_max_df=1000,
+        max_cands_per_house=20,
+        use_char_ngram=False,
+        use_combined_tfidf=False,
+        max_total_candidates_per_entity=25,
     )
+
 
     for country in countries:
         print(f"\n{'=' * 60}", flush=True)
         print(f"[Predict] PROCESSING COUNTRY: {country.upper()}", flush=True)
         print(f"{'=' * 60}", flush=True)
+
+        # Filter S1 entities for country
+        s1_country_all = s1_all[s1_all["country"] == country]
+        if sample_limit_per_country:
+            s1_country_all = s1_country_all.head(sample_limit_per_country).copy()
+
+        n_s1_country = len(s1_country_all)
+        print(f"[Predict] S1 entities to resolve for {country}: {n_s1_country:,}", flush=True)
+        if n_s1_country == 0:
+            continue
 
         # Load candidate pool
         t0 = time.time()
@@ -148,25 +163,17 @@ def run_inference(
             blocker.build_indexes(s2_pool, s3_pool)
         print(f"[Predict] Candidate indexing for {country} complete in {time.time() - t0:.1f}s.", flush=True)
 
-        # Read and process Test S1 in chunks
+        # Process Test S1 in chunks
         country_s1_processed = 0
-        s1_reader = pd.read_csv(TEST_SOURCE1_PATH, sep="\t", dtype=str, keep_default_na=False, chunksize=chunk_size_s1)
+        n_chunks = (n_s1_country + chunk_size_s1 - 1) // chunk_size_s1
 
-        for chunk_idx, s1_chunk in enumerate(s1_reader):
-            s1_country = s1_chunk[s1_chunk["country"] == country]
-            if len(s1_country) == 0:
-                continue
-
-            if sample_limit_per_country and (country_s1_processed + len(s1_country) > sample_limit_per_country):
-                rem = sample_limit_per_country - country_s1_processed
-                if rem <= 0:
-                    break
-                s1_country = s1_country.head(rem).copy()
+        for chunk_idx in range(n_chunks):
+            s1_chunk = s1_country_all.iloc[chunk_idx * chunk_size_s1 : (chunk_idx + 1) * chunk_size_s1].copy()
 
             t_chunk_start = time.time()
-            s1_country_norm = normalize_dataframe(s1_country, norm_cfg)
+            s1_country_norm = normalize_dataframe(s1_chunk, norm_cfg)
             s1_lookup = s1_country_norm.set_index("entity_id").to_dict(orient="index")
-            s1_ids = list(s1_country["entity_id"])
+            s1_ids = list(s1_chunk["entity_id"])
 
             # 1. Blocking
             if len(cand_lookup) > 0:
@@ -184,15 +191,17 @@ def run_inference(
                 if len(feat_df) > 0:
                     X = feat_df[feature_cols].values
                     probs = model.predict_proba(X)[:, 1]
-                    feat_df["pred_prob"] = probs
-
-                    # Filter predictions by optimal threshold
-                    hits_df = feat_df[feat_df["pred_prob"] >= threshold]
-                    for s1_id, group in hits_df.groupby("s1_id"):
-                        # Keep matches in order of probability descending
-                        sorted_matches = group.sort_values(by="pred_prob", ascending=False)["candidate_id"].tolist()
-                        # Strictly guarantee no duplicates and subset invariant
-                        matched_dict[s1_id] = list(dict.fromkeys(sorted_matches))
+                    mask = probs >= threshold
+                    if np.any(mask):
+                        hits_s1 = feat_df["s1_id"].values[mask]
+                        hits_cand = feat_df["candidate_id"].values[mask]
+                        hits_p = probs[mask]
+                        s1_match_scores = defaultdict(list)
+                        for sid, cid, p in zip(hits_s1, hits_cand, hits_p):
+                            s1_match_scores[sid].append((cid, p))
+                        for sid, cand_tuples in s1_match_scores.items():
+                            cand_tuples.sort(key=lambda x: x[1], reverse=True)
+                            matched_dict[sid] = list(dict.fromkeys([c for c, _ in cand_tuples]))
 
             # 3. Stream to Output Files
             with open(OUTPUT_MATCHING_PATH, "a", encoding="utf-8") as f_match, \
@@ -215,16 +224,32 @@ def run_inference(
                     if len(valid_matches) == 0:
                         total_singletons += 1
 
-            country_s1_processed += len(s1_country)
-            total_processed_s1 += len(s1_country)
-            print(f"[Predict]   Chunk {chunk_idx + 1}: Processed {len(s1_country):,} entities in {time.time() - t_chunk_start:.1f}s (Country Total: {country_s1_processed:,})", flush=True)
-
-            if sample_limit_per_country and country_s1_processed >= sample_limit_per_country:
-                break
+            country_s1_processed += len(s1_chunk)
+            total_processed_s1 += len(s1_chunk)
+            print(f"[Predict]   Chunk {chunk_idx + 1}/{n_chunks}: Processed {len(s1_chunk):,} entities in {time.time() - t_chunk_start:.1f}s (Country Total: {country_s1_processed:,} / {n_s1_country:,})", flush=True)
 
         # Free country memory
         del s2_pool, s3_pool, cand_lookup, blocker
         gc.collect()
+
+    # If full inference (no sample limit), re-order outputs to match exact test_source1.tsv row order
+    if not sample_limit_per_country and total_processed_s1 == len(original_s1_order):
+        print("\n[Predict] Re-ordering output TSVs to match exact test_source1.tsv entity order...", flush=True)
+        t0_sort = time.time()
+        order_index = {eid: idx for idx, eid in enumerate(original_s1_order)}
+
+        for file_path, header in [(OUTPUT_MATCHING_PATH, "source1_entity_id\tmatched_entity_ids"),
+                                  (OUTPUT_CANDIDATES_PATH, "source1_entity_id\tcandidate_entity_ids")]:
+            with open(file_path, "r", encoding="utf-8") as f:
+                next(f)  # skip header
+                lines = [line.rstrip("\n").split("\t", 1) for line in f if line.strip()]
+            # Sort according to original order
+            lines.sort(key=lambda x: order_index.get(x[0], 999999999))
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(f"{header}\n")
+                for s1_id, val in lines:
+                    f.write(f"{s1_id}\t{val}\n")
+        print(f"[Predict] Re-ordering complete in {time.time() - t0_sort:.1f}s.", flush=True)
 
     t_total = time.time() - t_start
     print(f"\n{'=' * 60}", flush=True)
@@ -237,6 +262,22 @@ def run_inference(
     print(f"  - Outputs saved to:")
     print(f"      1. {OUTPUT_MATCHING_PATH}")
     print(f"      2. {OUTPUT_CANDIDATES_PATH}")
+
+    # 4. Automatically run validation
+    validator_path = os.path.join(BASE_DIR, "student_resource", "utils", "validate_submission.py")
+    test_dir = os.path.join(BASE_DIR, "student_resource", "dataset", "test")
+    if os.path.isfile(validator_path):
+        print(f"\n[Predict] Executing official submission validator...", flush=True)
+        import subprocess
+        res = subprocess.run([
+            sys.executable, validator_path,
+            "--matching", OUTPUT_MATCHING_PATH,
+            "--candidate", OUTPUT_CANDIDATES_PATH,
+            "--test-dir", test_dir
+        ], capture_output=True, text=True)
+        print(res.stdout, flush=True)
+        if res.stderr:
+            print(res.stderr, flush=True)
 
 
 if __name__ == "__main__":
@@ -251,3 +292,4 @@ if __name__ == "__main__":
         chunk_size_s1=args.chunk_size,
         max_pool_records=args.max_candidates,
     )
+

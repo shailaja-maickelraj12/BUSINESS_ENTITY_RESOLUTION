@@ -1,0 +1,15 @@
+{
+  "random_seed": 42,
+  "val_size": 0.2,
+  "total_s1_entities": 2206821,
+  "train_s1_count": 1765456,
+  "val_s1_count": 441365,
+  "country_distribution_train": {
+    "US": 1058906,
+    "India": 706550
+  },
+  "country_distribution_val": {
+    "US": 264727,
+    "India": 176638
+  }
+}

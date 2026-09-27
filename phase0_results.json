@@ -1,0 +1,470 @@
+{
+  "random_pairs": [
+    {
+      "s1_id": "S1-725218936",
+      "s1_name": "Noify Software Inc.",
+      "s1_addr": "1212 Southbreeze Circle, Knoxville, TN",
+      "country": "US",
+      "m_id": "S2-875793063",
+      "m_name": "Noify Software \u00cdnc.",
+      "m_addr": "1212  SOUTHBREEZE CIR, KNOXVILLE, TN",
+      "name_sim": 73.6842105263158,
+      "addr_sim": 41.0958904109589
+    },
+    {
+      "s1_id": "S1-501948806",
+      "s1_name": "Gahlot Brothers Private Limited",
+      "s1_addr": "12 2 825 826 Mehdipatnam, Asifnagar, Hyderabad, Telangana",
+      "country": "India",
+      "m_id": "S3-720337141",
+      "m_name": "Sri Gahlot Brothers Private",
+      "m_addr": "Asifnagar, Hyderabad, 12 2 825 826 Mehdipatnam, TG",
+      "name_sim": 79.3103448275862,
+      "addr_sim": 91.58878504672897
+    },
+    {
+      "s1_id": "S1-468415490",
+      "s1_name": "Allied Medical Center LLC",
+      "s1_addr": "5902 Big Tree Road, Livonia, NY",
+      "country": "US",
+      "m_id": "S3-590657786",
+      "m_name": "Allied Center Medical LLC #11741",
+      "m_addr": "5902 Big Tree Rd, Lakeville, New York",
+      "name_sim": 87.71929824561404,
+      "addr_sim": 70.58823529411764
+    },
+    {
+      "s1_id": "S1-505203391",
+      "s1_name": "Bonham Dynamic Vista LLC",
+      "s1_addr": "206 Little Lakes Road, Warren, NY",
+      "country": "US",
+      "m_id": "S3-598137863",
+      "m_name": "LLC Bonham Dynamic Vdnmta",
+      "m_addr": "206 Little Lakes Road, Richfield Springs, New York",
+      "name_sim": 89.79591836734694,
+      "addr_sim": 67.46987951807229
+    },
+    {
+      "s1_id": "S1-745529529",
+      "s1_name": "Signature Industrial Enterprises Inc.",
+      "s1_addr": "ND, Fargo, 2510 36th Avenue",
+      "country": "US",
+      "m_id": "S3-867650991",
+      "m_name": "Signature Industrial Enterprises Incorporated",
+      "m_addr": "2466- 36th Ave, Fargo, North Dakota",
+      "name_sim": 87.8048780487805,
+      "addr_sim": 61.29032258064516
+    },
+    {
+      "s1_id": "S1-252789580",
+      "s1_name": "Gv Exports Private Limited",
+      "s1_addr": "G-21, Primus Building, Door No Sp-7A, Sidco Industrial Estate, Guindy, Chennai City Corporation, Chennai, Tamil Nadu",
+      "country": "India",
+      "m_id": "S2-660955575",
+      "m_name": "M/s Gv Exports Limited Services",
+      "m_addr": "G-21, PRIMUS BUILDING, DOOR NO SP-7A, SIDCO INDUSTRIAL ESTATE, GUINDY, CHENNAI CITY CORPORATION, Tamil Nadu",
+      "name_sim": 77.19298245614034,
+      "addr_sim": 41.255605381165914
+    },
+    {
+      "s1_id": "S1-643663949",
+      "s1_name": "L&t Wealth Pvt Ltd",
+      "s1_addr": "D - 7, Press Apartment, 23, I.P. Extension, Patparganj, Delhi, East Delhi, Delhi",
+      "country": "India",
+      "m_id": "S2-104366633",
+      "m_name": "L+t W\u00e9alth Pvt Ltd",
+      "m_addr": "D - ##7, PRESS APARTMENT, 23, I.P. EXTENSION, PATPARGANJ, DELHI, Delhi",
+      "name_sim": 88.88888888888889,
+      "addr_sim": 43.99999999999999
+    },
+    {
+      "s1_id": "S1-943341720",
+      "s1_name": "Turning Point Complex Ghod Dod Road Owners LLP",
+      "s1_addr": "1003-1004, Turning Point Complex Ghod Dod Road, Surat, Gujarat",
+      "country": "India",
+      "m_id": "S2-913288693",
+      "m_name": "LLP TURNING POINT COMPLEX GHOD DOD ROAD OWNERS",
+      "m_addr": "1003-1004, TURNING POINT COMPLEX GHOD DOD ROAD, SURAT, Gujarat",
+      "name_sim": 36.95652173913043,
+      "addr_sim": 54.83870967741935
+    },
+    {
+      "s1_id": "S1-379276686",
+      "s1_name": "Kelly Regional Seafood",
+      "s1_addr": "2153 Prospect Road, Wilson, NY",
+      "country": "US",
+      "m_id": "S2-947848545",
+      "m_name": "KELLY REGIONAL SEAFOOD",
+      "m_addr": "2153 PROSPECT RD, WILSON, NY",
+      "name_sim": 22.72727272727273,
+      "addr_sim": 51.72413793103448
+    },
+    {
+      "s1_id": "S1-289174936",
+      "s1_name": "Eleven Educational Society",
+      "s1_addr": "Shop No. 25, Plot No.15/A, Sector 17, Pooja Complex Behind Bikaner Sweet, Opp. Railway St., N, Avi Mumbai, New Panvel, Raigarh, Maharashtra",
+      "country": "India",
+      "m_id": "S2-833965757",
+      "m_name": "ELEVEN EDUCATIONAL SOCIETY CORP",
+      "m_addr": "",
+      "name_sim": 17.543859649122805,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-680593677",
+      "s1_name": "Shalibhadra Services Private Limited",
+      "s1_addr": "13/14, Civil Wing Tis Hazari Court, Delhi, New Delhi, Delhi",
+      "country": "India",
+      "m_id": "S2-503152432",
+      "m_name": "SHALIBHADRA SERVICES PRIVATE LIMITED",
+      "m_addr": "",
+      "name_sim": 19.444444444444443,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-892157439",
+      "s1_name": "Foundry LLC",
+      "s1_addr": "616 E Street, Unit 721, Washington, DC",
+      "country": "US",
+      "m_id": "S2-981318568",
+      "m_name": "Jaxsolumbra",
+      "m_addr": "466 E STREET, WASHINGTON, DC",
+      "name_sim": 27.27272727272727,
+      "addr_sim": 39.39393939393939
+    },
+    {
+      "s1_id": "S1-193904115",
+      "s1_name": "Basalt",
+      "s1_addr": "1000 Hillsborough Drive, Unit 27, Seneca, SC",
+      "country": "US",
+      "m_id": "S2-55018967",
+      "m_name": "Basalt",
+      "m_addr": "1000 HILLSBOROUGH DRIVE, SENECA, SC",
+      "name_sim": 100.0,
+      "addr_sim": 37.9746835443038
+    },
+    {
+      "s1_id": "S1-314077033",
+      "s1_name": "Kylila's Graphics Inc.",
+      "s1_addr": "IL, 3142 Spring Lake Drive, Lansing, Unit C 20",
+      "country": "US",
+      "m_id": "S3-902692016",
+      "m_name": "The Kylila's Kylila's Graphics Inc.",
+      "m_addr": "Spring Lake Drive, # C 20, Lansing, Illinois",
+      "name_sim": 77.19298245614034,
+      "addr_sim": 75.55555555555556
+    },
+    {
+      "s1_id": "S1-966584146",
+      "s1_name": "Herrera Processing, Inc",
+      "s1_addr": "15 Curtin Avenue, Pittsfield, MA",
+      "country": "US",
+      "m_id": "S3-338697331",
+      "m_name": "Herrera Processing, Inc",
+      "m_addr": "15 Curtin Ave, PO Box 632, Pittsfield, Massachusetts",
+      "name_sim": 100.0,
+      "addr_sim": 66.66666666666667
+    },
+    {
+      "s1_id": "S1-700162163",
+      "s1_name": "Huff, Alicia J., D.D.S., PC",
+      "s1_addr": "7971 Valley View Road, Custer, WA",
+      "country": "US",
+      "m_id": "S3-431897226",
+      "m_name": "Huff Alicia J. D.D.S. PC",
+      "m_addr": "7971 Valley View Road, Custer, Washington",
+      "name_sim": 94.11764705882352,
+      "addr_sim": 86.48648648648648
+    },
+    {
+      "s1_id": "S1-180692658",
+      "s1_name": "Angel Equity Partners, Inc",
+      "s1_addr": "208 Evergreen Drive, Mineral Wells, TX",
+      "country": "US",
+      "m_id": "S3-688533610",
+      "m_name": "Angel Equity Partners, INC",
+      "m_addr": "",
+      "name_sim": 92.3076923076923,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-554578976",
+      "s1_name": "Platinum Creative Associates LLC",
+      "s1_addr": "12000 Hickory Nut Road, Cloverdale, IN",
+      "country": "US",
+      "m_id": "S2-566764464",
+      "m_name": "DOVAPYRABELO",
+      "m_addr": "12000  HICKORY NUT ROAD, CLOVERDALE, IN",
+      "name_sim": 9.090909090909093,
+      "addr_sim": 47.36842105263158
+    },
+    {
+      "s1_id": "S1-483418018",
+      "s1_name": "Division of Public Works",
+      "s1_addr": "10474 Rancho Road, Adelanto, CA",
+      "country": "US",
+      "m_id": "S2-939048763",
+      "m_name": "Division of [Public]",
+      "m_addr": "10474 RANCHO ROAD, ADELANTO, CA",
+      "name_sim": 81.81818181818181,
+      "addr_sim": 51.61290322580645
+    },
+    {
+      "s1_id": "S1-610645289",
+      "s1_name": "Surya Investments Private Limited",
+      "s1_addr": "Unit (Comm) 277-279, Adjoining Pnb Bank Near Gurdwara Kalgidhar Sahib, G.T. Road, Khanna, Ludhiana, Punjab",
+      "country": "India",
+      "m_id": "S3-847748130",
+      "m_name": "surya investments private limited",
+      "m_addr": "Unit (Comm) 277-279, Adjoining Pnb Bank Near Gurdwara Kalgidhar Sahib, G.t. Road, Khanna, Ludhiana, \u0a2a\u0a70\u0a1c\u0a3e\u0a2c",
+      "name_sim": 87.87878787878788,
+      "addr_sim": 92.89099526066352
+    }
+  ],
+  "hard_pairs": [
+    {
+      "s1_id": "S1-604245612",
+      "s1_name": "Cooperative Payment Networks LLC",
+      "s1_addr": "Akron, OH, 345 Springcrest Drive",
+      "country": "US",
+      "m_id": "S2-782055224",
+      "m_name": "COOPERATIVE-PAYMENT",
+      "m_addr": "",
+      "name_sim": 7.843137254901967,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-473953481",
+      "s1_name": "Cornerstone Rapid Newtekone",
+      "s1_addr": "19 Lasalle Avenue, Unit Suite 4, Kenmore, NY",
+      "country": "US",
+      "m_id": "S2-604168143",
+      "m_name": "CORNERSTONE-RAPID NEWTEKONE",
+      "m_addr": "",
+      "name_sim": 11.111111111111116,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-844779615",
+      "s1_name": "Weber Continental Capital Group",
+      "s1_addr": "WI, N65W12617 Marach Road, Village Of Menomonee Falls",
+      "country": "US",
+      "m_id": "S2-801506089",
+      "m_name": "WEBER CONTINENTAL",
+      "m_addr": "",
+      "name_sim": 12.5,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-590200303",
+      "s1_name": "Camous Inc",
+      "s1_addr": "1027 Ridge Drive, Linville, NC",
+      "country": "US",
+      "m_id": "S2-800556676",
+      "m_name": "CAMOUS",
+      "m_addr": "",
+      "name_sim": 12.5,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-406306801",
+      "s1_name": "Robidoux Interstate Owl LLC",
+      "s1_addr": "1983 Bowles Avenue, Creedmoor, NC",
+      "country": "US",
+      "m_id": "S2-688083886",
+      "m_name": "ROBIDOUX INTERSTATE",
+      "m_addr": "",
+      "name_sim": 13.043478260869568,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-970221512",
+      "s1_name": "Precision Talent Technologies",
+      "s1_addr": "8 Davis Street, Gloucester, MA",
+      "country": "US",
+      "m_id": "S2-461984303",
+      "m_name": "PRECISION TECHNOLOGIES SERVICE",
+      "m_addr": "",
+      "name_sim": 13.559322033898303,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-499597346",
+      "s1_name": "Takshashila Farmer Pvt Ltd",
+      "s1_addr": "A-404, Nilgiri Garden, Sector 24, C B D Belapur, Navi Mumbai, Navi Mumbai, Raigarh, Maharashtra",
+      "country": "India",
+      "m_id": "S2-149835259",
+      "m_name": "TAKSHASHILA FARMER",
+      "m_addr": "",
+      "name_sim": 13.636363636363635,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-414379339",
+      "s1_name": "Data Infrastructure Services",
+      "s1_addr": "224 Wall Street, Dickinson, TX",
+      "country": "US",
+      "m_id": "S2-107452293",
+      "m_name": "DATA SERVICES (INFRASTRUCTURE)",
+      "m_addr": "",
+      "name_sim": 13.793103448275868,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-649402919",
+      "s1_name": "Taraita Broadband Corporation",
+      "s1_addr": "H. No. 87, Ii Floor Sidhartha Enclave, New Delhi, Delhi",
+      "country": "India",
+      "m_id": "S2-656227040",
+      "m_name": "TARAITA CORPORATION SERVICES",
+      "m_addr": "",
+      "name_sim": 14.035087719298245,
+      "addr_sim": 0.0
+    },
+    {
+      "s1_id": "S1-747156968",
+      "s1_name": "Signature Semiconductor Alliance Group",
+      "s1_addr": "3617 Valley Court, San Bernardino, CA",
+      "country": "US",
+      "m_id": "S2-834959331",
+      "m_name": "SIGNATURE  SEMICONDUCTOR ALLIANCE",
+      "m_addr": "",
+      "name_sim": 14.28571428571429,
+      "addr_sim": 0.0
+    }
+  ],
+  "id_leakage": {
+    "corr": -0.01235017135770221,
+    "mean_true_diff": 335170951.1334,
+    "mean_random_diff": 330696360.567,
+    "exact_id_matches": 0
+  },
+  "france_samples": {
+    "s1": [
+      {
+        "entity_id": "S1-156285671",
+        "business_name": "<< Team Ecole",
+        "business_address": "175 Boulevard du Pr\u00e9sident Franklin Roosevelt, Bordeaux, Nouvelle-Aquitaine",
+        "country": "France"
+      },
+      {
+        "entity_id": "S1-921369899",
+        "business_name": "ZNB Club SARL",
+        "business_address": "Nouvelle-Aquitaine, La Teste-de-Buch, 5 bis Rue Pierre Dignac",
+        "country": "France"
+      },
+      {
+        "entity_id": "S1-913506265",
+        "business_name": "Thermal & Fils SASU",
+        "business_address": "20 Rue Parmentier, Dunkerque, Hauts-de-France",
+        "country": "France"
+      },
+      {
+        "entity_id": "S1-628750886",
+        "business_name": "Grain & Fils",
+        "business_address": "Lille, 329 Avenue de Dunkerque, Hauts-de-France",
+        "country": "France"
+      },
+      {
+        "entity_id": "S1-466641145",
+        "business_name": "Elephant Centre EURL",
+        "business_address": "30 Rue Lachassaigne, Bordeaux, Nouvelle-Aquitaine",
+        "country": "France"
+      },
+      {
+        "entity_id": "S1-385801270",
+        "business_name": "Maison de Sant\u00e9 Generation",
+        "business_address": "30 Rue Louis Th\u00e9nard, Saint-Nazaire, Pays de la Loire",
+        "country": "France"
+      },
+      {
+        "entity_id": "S1-717749279",
+        "business_name": "Saint-Herblain Societe SARL",
+        "business_address": "5 Impasse Jean Baptiste Cl\u00e9ment, Saint-Herblain, Pays de la Loire",
+        "country": "France"
+      },
+      {
+        "entity_id": "S1-616465752",
+        "business_name": "Association de Pena",
+        "business_address": "21 Chemin de la Traverse, Bordeaux, Nouvelle-Aquitaine",
+        "country": "France"
+      },
+      {
+        "entity_id": "S1-261476747",
+        "business_name": "Securite Darts Sport SARL",
+        "business_address": "21 Chemin des R\u00e9unis, Nantes, Pays de la Loire",
+        "country": "France"
+      },
+      {
+        "entity_id": "S1-969300060",
+        "business_name": "Grillons Lycee SAS",
+        "business_address": "Bordeaux, 154 BD du President Wilson, Nouvelle-Aquitaine",
+        "country": "France"
+      }
+    ],
+    "s2": [
+      {
+        "entity_id": "S2-566025912",
+        "business_name": "Marina Ecole France Sarl",
+        "business_address": "63 R. DE DIEPPE, LILLE, Hauts-de-France",
+        "country": "France"
+      },
+      {
+        "entity_id": "S2-158121477",
+        "business_name": "SCI Ptit \u00c0micale",
+        "business_address": "18 RUE JEN ZAY, Dunkerque, Nord",
+        "country": "France"
+      },
+      {
+        "entity_id": "S2-770341988",
+        "business_name": "sci ligue ici parents",
+        "business_address": "NO. 5 ALL\u00c9E DES H\u00caTRES, Pornic, Loire-Atlantique",
+        "country": "France"
+      },
+      {
+        "entity_id": "S2-647447093",
+        "business_name": "Tunisie Inter Cie International SARL",
+        "business_address": "77 AV LEON JOUHAUX, LILLE",
+        "country": "France"
+      },
+      {
+        "entity_id": "S2-262646344",
+        "business_name": "OZT \u00c0MICALE SAS",
+        "business_address": "24 R DESAIX, TOURCOING, Hauts-de-France",
+        "country": "France"
+      }
+    ],
+    "s3": [
+      {
+        "entity_id": "S3-198586129",
+        "business_name": "Fractales Amis Groupe S.A.S",
+        "business_address": "23 Rue Icmre, La Teste-de-buch, Gironde",
+        "country": "France"
+      },
+      {
+        "entity_id": "S3-934627663",
+        "business_name": "Dunkerque Club",
+        "business_address": "13 Rue Jules Andrieu, Dunkerque",
+        "country": "France"
+      },
+      {
+        "entity_id": "S3-92755938",
+        "business_name": "Engages \u00c0rt Pharmacie SCI",
+        "business_address": "250 R De Lille, Roubaix, Hauts-de-France",
+        "country": "France"
+      },
+      {
+        "entity_id": "S3-712130770",
+        "business_name": "Europ & Fr\u00e8res Distribution S.A.",
+        "business_address": "(41) Rue Des Thuyas, L\u00e8ge-cap-ferret, Gironde",
+        "country": "France"
+      },
+      {
+        "entity_id": "S3-715117209",
+        "business_name": "Memorial Comite",
+        "business_address": "135 Rue Henri Dunant, Calais, Hauts-de-France",
+        "country": "France"
+      }
+    ]
+  }
+}

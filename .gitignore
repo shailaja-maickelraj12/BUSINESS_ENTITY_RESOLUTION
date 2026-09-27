@@ -1,0 +1,26 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Large Datasets & Archives (> 100MB / raw competition data)
+*.zip
+*.tar.gz
+*.rar
+6ab10eb3b23ba_student_resource/
+student_resource/dataset/
+
+# Intermediate feature matrices
+artifacts/features/
+
+# OS / Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
